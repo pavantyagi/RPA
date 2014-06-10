@@ -1,0 +1,4 @@
+RPA
+===
+
+Robust Probabilistic Averaging
