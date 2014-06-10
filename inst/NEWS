@@ -1,0 +1,210 @@
+Changes in 1.15.34 (2013-03-07)
+  o rpa.online has been added and benchmarked
+  o vignette contents moved to online wiki
+
+Changes in 1.13.06 (2012-09-09)
+
+  o affinity estimates storing option added to rpa.online
+  o moved sigma2 -> tau2 to make notation compatible with publications
+
+Changes in 1.13.02 (2012-05-27)
+
+NEW FEATURES
+
+  o added arguments in rpa.online function: save.batches.dir, keep.batch.files, unique.run.identifier
+  o changed the default for save.batches option in rpa.online into TRUE
+
+BUG FIXES
+  o fixed load.batches bug in summarize.batches
+
+Changes in 1.11.13 (2012-02-25)
+
+  o modifications to accommodate single-probe probesets without errors
+  o sigma2.method default to "robust" in functions RPA.sigma2.update and rpa.fit
+  o changed defaults in set.alpha function
+  o added missing data imputation in rpa.fit
+
+Changes in 1.11.12 (2011-12-13)
+
+  o removed cind option from update.hyperparameters in RPA.online
+
+Changes in 1.11.05 (2011-11-11)
+
+  o online functions work properly
+
+Changes in 1.9.19 (2011-10-29)
+
+  o removed compiler and corrected the broken compiler function
+    references
+
+Changes in 1.9.17 (2011-06-27)
+
+  o added bg correction in rpa.online
+ 
+  o accurate and relatively fast variance hyperparameter update
+    function added (see update.hyperparameters, update.s2)
+
+Changes in 1.9.11 (2011-06-02)
+
+  o speedups in hyperparameter estimation; alpha treated as scalar
+  o removed affinity.method
+  o added quantiles.online normalization method
+
+BUG FIXES
+
+  o alpha, beta updates fixed
+  o rpa.fit did not return updated alpha, beta: now corrected.
+
+Changes in 1.9.06 (2011-05-29)
+
+  o rpa.fit-class: added alpha, beta prior parameters for the inverse
+    Gamma conjugate prior for the probe-specific variances
+
+  o modified RPA.iteration, RPA.update.sigma2 so as to directly
+  utilize priors everywhere. 
+
+  o added set.alpha, set.beta and update.hyperparameters,
+  update.alpha, update.beta in internal functions
+
+  o added toydata generator function sample.probeset
+
+  o rpa.plot: added comparison of toydata and fitted data by adding
+  the toydata.object argument
+
+Changes in 1.9.03 (2011-05-14)
+
+  o corrected AffyCompII result note
+
+Changes in 1.9.03 (2011-04-27)
+
+  o polished plot functions in rpa.plot and plot-methods
+
+Changes in 1.9.02 (2011-04-21)
+
+  o added compiler to betahat in RPA.sigma2.update.R to speed up
+
+  o added NA/NaN check to RPA.iteration after a defected affybatch
+    with NA values was found to cause crash
+
+Changes in 1.7.34 (2011-03-14)
+
+  o added note on AffyComp results in the Vignette
+
+Changes in 1.7.32 (2011-03-12)
+
+SIGNIFICANT USER-VISIBLE CHANGES 
+
+  o added estimation of probe affinities in rpa and RPA.pointestimate
+  functions. Now returning expression values in the original data
+  domain, i.e. in 'absolute' expression levels. Provides options for
+  affinity estimation through affinity.method field in certain functions.
+  o added 'affinity' field in rpa-class and rpa.list-class
+  o added estimate.affinities function
+  o removed exclude reference array option
+  o added rpa.fit class (S3) to provide storage for an individual model
+  o rpa.fit function now fits the model (including affinities) for
+    given data. This is a generic function to calculate an individual
+    model instance for any data following the distributional
+    assumptions of the model. See tests/rpa.fit.test.R for an example. 
+
+Changes in 1.7.3 (2011-01-20)
+
+BUG FIXES
+
+  o in 'rpa' wrapper function the exclude.reference.array option was
+    interpreted in the opposite way than intended. Now the
+    reference.control.array = TRUE excludes the reference array from
+    output. Default is FALSE, i.e. reference array is included.
+
+Changes in 1.7.2 (2011-01-14)
+
+  o updated citation
+  o moved license from GPL>=2 into FreeBSD since that is less
+  restrictive open license. OK since all copyrights of the GPL>=2
+  version are with the package author.
+
+Changes in 1.5.2 (2010-05-19)
+
+USER-VISIBLE CHANGES
+  o the vignette has been improved
+  o added firstlib.R function to print copyright notice during loading
+  o added a copy of the GNU GPL 2 licence
+  o added citation information, see citation("RPA")
+
+Changes in 1.3.6 (2010-03-28)
+
+BUG FIXES
+  o added documentation on 'get.probe.noise.estimates' function
+
+Changes in 1.3.5 (2010-03-18)
+
+USER-VISIBLE CHANGES
+
+  o in the 'rpa' preprocessing wrapper, include the reference array
+  (cind) to the differential gene expression matrix
+  output. Optionally, the reference array can be excluded. See the
+  'include.reference.array' parameter of function 'rpa'. Note that all
+  differential expression values of the reference array are 0 since
+  the reference is compared against itself.
+
+  o added function get.probe.noise.estimates. Outputs probe-level
+  noise estimates with normalization options.
+
+BUG FIXES
+
+  o added destructive=TRUE into background correction. Should help with
+  large data.
+
+
+Changes in 1.3.2 (2010-03-02)
+
+SIGNIFICANT USER-VISIBLE CHANGES
+
+  o changed default sigma2.method into 'robust'
+
+  o control array default set to cind = 1 (previosly sampled at
+  random if not specified)
+
+  o initialize.priors replaced by set.priors function
+
+
+USER-VISIBLE CHANGES
+
+  o removed sigma2.guess from user-defined parameters in RPA.iteration
+
+  o RPA.pointestimate: added regularization parameters alpha, beta
+
+
+NEW FEATURES
+
+  o support for alternative CDF files
+
+  o rpa function: a wrapper for preprocessing gene expression data
+  with the RPA model
+
+  o rpa.plot function: visualize probe-level data and results for a
+  given probeset
+
+  o background correction to RPA.preprocess
+
+  o option to define background correction and normalization
+  parameters
+
+  o regularization for noise term estimation (sigma2)
+
+  o sigma2.method 'mean' and 'robust' added
+
+
+BUG FIXES
+
+  o rpa class: added elements 'data', 'cdf' and 'abatch'
+
+  o RPA.preprocess: background correction added, and log2
+  transformation now done after normalization
+
+  o added 'maxloop' parameter to RPA.iteration function call 
+
+  o moved the contents of R/zzz.R into AllGenerics.R, AllClasses.R,
+  *-methods.R, *-accessors.R
+
+  o code optimized for speed
