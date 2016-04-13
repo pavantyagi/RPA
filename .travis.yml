@@ -1,2 +1,6 @@
 language: r
 bioc_required: true
+bioc_packages:
+  - hgu95av2cdf
+r_packages:
+  - RSQLite
