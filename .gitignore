@@ -1,1 +1,8 @@
 *~
+inst/extras/*.tar.gz
+inst/extras/*~
+inst/extras/RPA.Rcheck
+inst/extras/*.Rout
+inst/extras/.RData
+
+
